@@ -94,7 +94,9 @@ class App extends Component {
     const { images, isLoading, isError, isEnd } = this.state;
     return (
       <div className={styles.App}>
+        
         <SearchBar onSubmit={this.handleSearchSubmit} />
+        
         <TailSpin
           visible={true}
           height="80"
@@ -105,22 +107,14 @@ class App extends Component {
           wrapperStyle={{}}
           wrapperClass=""
         />
+        
+        
         <ImageGallery images={images} />
         {isLoading && <Loader />}
         {!isLoading && !isError && images.length > 0 && !isEnd && (
           <Button onClick={this.handleLoadMore} />
         )}
         {isError && <p>Something went wrong. Please try again later.</p>}
-        <TailSpin
-          visible={true}
-          height="80"
-          width="80"
-          color="#4fa94d"
-          ariaLabel="tail-spin-loading"
-          radius="1"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
       </div>
     );
   }
