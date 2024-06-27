@@ -5,6 +5,7 @@ import Button from './Button/Button';
 import Loader from './Loader/Loader';
 import { getAPI } from 'pixabay-api';
 import styles from './App.module.css';
+import { TailSpin } from 'react-loader-spinner';
 
 class App extends Component {
   state = {
@@ -48,6 +49,7 @@ class App extends Component {
         alert('No images found. Try a different search.');
         return;
       }
+      
     } catch (error) {
       this.setState({ isLoading: false, isError: true });
       alert(`An error occurred while fetching data: ${error}`);
@@ -100,6 +102,16 @@ class App extends Component {
           <Button onClick={this.handleLoadMore} />
         )}
         {isError && <p>Something went wrong. Please try again later.</p>}
+        <TailSpin
+  visible={true}
+  height="80"
+  width="80"
+  color="#4fa94d"
+  ariaLabel="tail-spin-loading"
+  radius="1"
+  wrapperStyle={{}}
+  wrapperClass=""
+  />
       </div>
     );
   }
