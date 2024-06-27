@@ -10,7 +10,7 @@ import { TailSpin } from 'react-loader-spinner';
 class App extends Component {
   state = {
     images: [],
-    
+
     currentPage: 1,
     searchQuery: '',
     isLoading: false,
@@ -49,7 +49,6 @@ class App extends Component {
         alert('No images found. Try a different search.');
         return;
       }
-      
     } catch (error) {
       this.setState({ isLoading: false, isError: true });
       alert(`An error occurred while fetching data: ${error}`);
@@ -96,6 +95,16 @@ class App extends Component {
     return (
       <div className={styles.App}>
         <SearchBar onSubmit={this.handleSearchSubmit} />
+        <TailSpin
+          visible={true}
+          height="80"
+          width="80"
+          color="#4fa94d"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
         <ImageGallery images={images} />
         {isLoading && <Loader />}
         {!isLoading && !isError && images.length > 0 && !isEnd && (
@@ -103,15 +112,15 @@ class App extends Component {
         )}
         {isError && <p>Something went wrong. Please try again later.</p>}
         <TailSpin
-  visible={true}
-  height="80"
-  width="80"
-  color="#4fa94d"
-  ariaLabel="tail-spin-loading"
-  radius="1"
-  wrapperStyle={{}}
-  wrapperClass=""
-  />
+          visible={true}
+          height="80"
+          width="80"
+          color="#4fa94d"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
       </div>
     );
   }
